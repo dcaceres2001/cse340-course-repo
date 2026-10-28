@@ -1,0 +1,28 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "first json file",
+  "homepage": "https://github.com/dcaceres2001/cse340-course-repo#readme",
+  "bugs": {
+    "url": "https://github.com/dcaceres2001/cse340-course-repo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcaceres2001/cse340-course-repo.git"
+  },
+  "license": "ISC",
+  "author": "Douglas",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
