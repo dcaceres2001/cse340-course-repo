@@ -8,10 +8,14 @@
         <p>Browse service projects by category to find opportunities that match your interests.</p>
 
         <ul>
-            <li>Environmental</li>
-            <li>Educational</li>
-            <li>Community Service</li>
-            <li>Health and Wellness</li>
+            <% categories.forEach(category=> { %>
+                <li><strong>
+                        <p>Category: <%= category.name %>
+                        </p>
+
+                    </strong>
+                </li>
+                <% }); %>
         </ul>
     </main>
 

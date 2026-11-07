@@ -3,11 +3,24 @@
         <h1>
             <%= title %>
         </h1>
-        <h2>Upcoming Service Projects</h2>
+        
         <ul>
-            <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
-            <li>Food Drive - Help collect and distribute food to those in need.</li>
-            <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
+
+            <% projects.forEach(project=> { %>
+                <li><strong>
+                        <p>Organization: <%= project.organization_name %>
+                        </p>
+                        <%= project.title %>
+                    </strong>: <%= project.description %>
+                        <p>Location: <%= project.location %>
+                        </p>
+                        <p><strong>Date:</strong>
+                        <%= project.date.toLocaleDateString('en-US', { weekday: 'long' , year: 'numeric' , month: 'long' ,
+                            day: 'numeric' }) %>
+                        </p>
+
+                </li>
+                <% }); %>
         </ul>
     </main>
 
