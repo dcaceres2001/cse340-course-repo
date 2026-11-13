@@ -2,6 +2,9 @@ import { getAllOrganizations, getOrganizationDetails } from '../models/organizat
 import { getProjectsByOrganizationId } from '../models/projects.js';
 
 
+
+
+
 const showOrganizationsPage = async (req, res) => {
     const organizations = await getAllOrganizations();
     const title = 'Our Partner Organizations';
@@ -18,4 +21,7 @@ const showOrganizationDetailsPage = async (req, res) => {
     res.render('organization', { title, organizationDetails, projects });
 };
 
+
+
 export { showOrganizationsPage, showOrganizationDetailsPage };
+

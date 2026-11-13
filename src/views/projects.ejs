@@ -3,24 +3,38 @@
         <h1>
             <%= title %>
         </h1>
-        
-        <ul>
 
+        <ul class="project-list">
             <% projects.forEach(project=> { %>
-                <li><strong>
-                        <p>Organization: <%= project.organization_name %>
-                        </p>
-                        <%= project.title %>
-                    </strong>: <%= project.description %>
-                        <p>Location: <%= project.location %>
-                        </p>
-                        <p><strong>Date:</strong>
-                        <%= project.date.toLocaleDateString('en-US', { weekday: 'long' , year: 'numeric' , month: 'long' ,
-                            day: 'numeric' }) %>
-                        </p>
+                <li class="project-card">
+                    <h2>
+                        <a href="/project/<%= project.project_id %>">
+                            <%= project.title %>
+                        </a>
+                    </h2>
 
+                    <p class="project-meta">
+                        <span>
+                            <%= new Date(project.date).toLocaleDateString('en-US', { weekday: 'short' , year: 'numeric'
+                                , month: 'long' , day: 'numeric' }) %>
+                        </span>
+                        <span>
+                            <%= project.location %>
+                        </span>
+                    </p>
+
+                    <p class="project-description">
+                        <%= project.description %>
+                    </p>
+
+                    <p class="project-org">
+                        Organized by
+                        <a href="/organization/<%= project.organization_id %>">
+                            <%= project.organization_name %>
+                        </a>
+                    </p>
                 </li>
-                <% }); %>
+                <% }) %>
         </ul>
     </main>
 
