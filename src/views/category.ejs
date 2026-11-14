@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+    <main>
+        <h1>
+            <%= category.name %>
+        </h1>
+
+        <% if (projects.length> 0) { %>
+            <ul class="project-list">
+                <% projects.forEach(project=> { %>
+                    <li class="project-card">
+                        <h2>
+                            <a href="/project/<%= project.project_id %>">
+                                <%= project.title %>
+                            </a>
+                        </h2>
+
+                        <p class="project-meta">
+                            <span>
+                                <%= new Date(project.date).toLocaleDateString('en-US', { weekday: 'short' ,
+                                    year: 'numeric' , month: 'long' , day: 'numeric' }) %>
+                            </span>
+                            <span>
+                                <%= project.location %>
+                            </span>
+                        </p>
+
+                        <p class="project-org">
+                            Organized by
+                            <a href="/organization/<%= project.organization_id %>">
+                                <%= project.organization_name %>
+                            </a>
+                        </p>
+                    </li>
+                    <% }); %>
+            </ul>
+            <% } else { %>
+                <p>No projects found for this category.</p>
+                <% } %>
+    </main>
+
+    <%- include('partials/footer') %>

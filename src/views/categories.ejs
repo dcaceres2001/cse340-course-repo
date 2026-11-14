@@ -7,16 +7,15 @@
         <h2>Service Categories</h2>
         <p>Browse service projects by category to find opportunities that match your interests.</p>
 
-        <ul>
-            <% categories.forEach(category=> { %>
-                <li><strong>
-                        <p>Category: <%= category.name %>
-                        </p>
-
-                    </strong>
-                </li>
-                <% }); %>
-        </ul>
+    <ul>
+        <% categories.forEach(category=> { %>
+            <li>
+                <a href="/category/<%= category.category_id %>">
+                    <%= category.name %>
+                </a>
+            </li>
+            <% }); %>
+    </ul>
     </main>
 
     <%- include('partials/footer') %>
