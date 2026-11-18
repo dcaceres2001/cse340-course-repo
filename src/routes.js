@@ -1,15 +1,18 @@
 import express from 'express';
 
 import { showHomePage } from './controllers/index.js';
-import { showProjectsPage } from './controllers/projects.js';
+import { showProjectsPage, projectValidation } from './controllers/projects.js';
 import { showCategoriesPage } from './controllers/categories.js';
-import { showOrganizationsPage } from './controllers/organizations.js';
+import { showOrganizationsPage, showOrganizationDetailsPage, showNewOrganizationForm, showEditOrganizationForm, processEditOrganizationForm, organizationValidation} from './controllers/organizations.js';
 import { showTestError } from './controllers/errors.js';
-import { showOrganizationDetailsPage } from './controllers/organizations.js';
-import { showProjectDetailsPage } from './controllers/projects.js';
+import { showProjectDetailsPage, showNewProjectForm, processNewProjectForm } from './controllers/projects.js';
 import { showCategoryDetailsPage } from './controllers/categories.js';
-import { showNewOrganizationForm } from './controllers/organizations.js';
 import { processNewOrganizationForm } from './controllers/organizations.js';
+import { showAssignCategoriesForm, processAssignCategoriesForm } from './controllers/categories.js';
+
+
+
+
 
 const router = express.Router();
 
@@ -42,7 +45,26 @@ router.get('/category/:id', showCategoryDetailsPage);
 router.get('/new-organization', showNewOrganizationForm);
 
 // Route to handle new organization form submission
-router.post('/new-organization', processNewOrganizationForm);
+router.post('/new-organization',  processNewOrganizationForm);
+
+// Route for editing an organization (GET request to show the edit form)
+router.get('/edit-organization/:id', showEditOrganizationForm);
+
+// route to handle edit organization form submission (POST request)
+router.post('/edit-organization/:id', organizationValidation, processEditOrganizationForm);
+
+// Route for new project page
+router.get('/new-project', showNewProjectForm);
+
+// Route to handle new project form submission
+router.post('/new-project', projectValidation, processNewProjectForm);
+
+// Route for assigning categories to a project (GET request to show the form)
+router.get('/assign-categories/:id', showAssignCategoriesForm);
+
+// Route to handle assigning categories to a project (POST request)
+router.post('/assign-categories/:id', processAssignCategoriesForm);
+
 
 
 
