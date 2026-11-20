@@ -9,7 +9,7 @@ import { showProjectDetailsPage, showNewProjectForm, processNewProjectForm } fro
 import { showCategoryDetailsPage } from './controllers/categories.js';
 import { processNewOrganizationForm } from './controllers/organizations.js';
 import { showAssignCategoriesForm, processAssignCategoriesForm } from './controllers/categories.js';
-
+import { showEditProjectForm, processEditProjectForm } from './controllers/projects.js'
 
 
 
@@ -64,6 +64,11 @@ router.get('/assign-categories/:id', showAssignCategoriesForm);
 
 // Route to handle assigning categories to a project (POST request)
 router.post('/assign-categories/:id', processAssignCategoriesForm);
+
+// Route to handle edit project form
+router.get('/edit-project/:id', showEditProjectForm);
+
+router.post('/edit-project/:id', processEditProjectForm);
 
 
 
