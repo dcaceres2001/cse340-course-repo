@@ -23,13 +23,13 @@
         </nav>
     </header>
 
-    <% const messages=flash(); %>
+<% const messages=flash(); %>
+    <div class="flash-messages">
         <% Object.keys(messages).forEach(type=> { %>
-            <% if (messages[type].length> 0) { %>
-
-                <% messages[type].forEach(msg=> { %>
+            <% messages[type].forEach(msg=> { %>
+                <p class="flash flash-<%= type %>">
                     <%= msg %>
-                        <% }); %>
-
-                            <% } %>
-                                <% }); %>
+                </p>
+                <% }); %>
+                    <% }); %>
+    </div>

@@ -289,6 +289,79 @@ ul {
     border-color: #bee5eb;
 }
 
+/* ---------- Flash messages ---------- */
+.flash-messages {
+    width: 100%;
+    max-width: 960px;
+    margin: 1.5rem auto 0;
+    padding: 0;
+}
+
+.flash {
+    margin: 0 0 0.5rem;
+    max-width: none;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid;
+    font-weight: 600;
+    text-align: center;
+}
+
+.flash-error {
+    background-color: #fdecea;
+    border-color: #f5b5ae;
+    color: #8a1f17;
+}
+
+.flash-success {
+    background-color: #e8f5e9;
+    border-color: #a5d6a7;
+    color: #1b5e20;
+}
+
+@media (max-width: 600px) {
+    .flash-messages {
+        width: auto;
+        margin: 1rem 1rem 0;
+    }
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    max-width: 480px;
+    padding: 0.5rem 0.75rem;
+    font: inherit;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+button[type="submit"] {
+    padding: 0.5rem 1.25rem;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--color-primary-hover);
+}
+
 /* ---------- Footer ---------- */
 footer {
     background-color: var(--color-primary);

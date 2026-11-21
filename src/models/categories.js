@@ -1,26 +1,26 @@
 import db from './db.js'
 
 const getAllCategories = async () => {
-    const query = `
+  const query = `
         SELECT category_id, name
       FROM public.categories;
     `;
 
-    const result = await db.query(query);
+  const result = await db.query(query);
 
-    return result.rows;
+  return result.rows;
 }
 
 const getCategoryDetails = async (categoryId) => {
-    const query = `
+  const query = `
         SELECT category_id, name
       FROM public.categories
       WHERE category_id = $1;
     `;
 
-    const result = await db.query(query, [categoryId]);
+  const result = await db.query(query, [categoryId]);
 
-    return result.rows[0];
+  return result.rows[0];
 }
 
 const getCategoriesByProjectId = async (projectId) => {
@@ -62,5 +62,38 @@ const updateCategoryAssignments = async (projectId, categoryIds) => {
   }
 };
 
-export { getAllCategories, getCategoryDetails, getCategoriesByProjectId, updateCategoryAssignments };
+const createCategory = async (name) => {
+  const query = `
+    INSERT INTO public.categories (name)
+    VALUES ($1)
+    RETURNING category_id
+  `;
+
+  const result = await db.query(query, [name]);
+
+  if (result.rows.length === 0) {
+    throw new Error('Failed to create category');
+  }
+
+  return result.rows[0].category_id;
+};
+
+const updateCategory = async (categoryId, name) => {
+  const query = `
+    UPDATE public.categories
+    SET name = $1
+    WHERE category_id = $2
+    RETURNING category_id
+  `;
+
+  const result = await db.query(query, [name, categoryId]);
+
+  if (result.rows.length === 0) {
+    throw new Error('Category not found');
+  }
+
+  return result.rows[0].category_id;
+};
+
+export { getAllCategories, getCategoryDetails, getCategoriesByProjectId, updateCategoryAssignments, createCategory, updateCategory };
 
