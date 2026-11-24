@@ -4,7 +4,7 @@ const getAllProjects = async () => {
   const query = `
     SELECT p.project_id, p.organization_id, p.title, p.description, p.location, p.date, o.name AS organization_name
     FROM public.projects p
-    JOIN public.organization o ON p.organization_id = o.organization_id;
+    JOIN public.organizations o ON p.organization_id = o.organization_id;
   `;
 
   const result = await db.query(query);
@@ -61,7 +61,7 @@ const getProjectDetails = async (id) => {
       p.organization_id,
       o.name AS organization_name
     FROM public.projects p
-    JOIN public.organization o ON p.organization_id = o.organization_id
+    JOIN public.organizations o ON p.organization_id = o.organization_id
     WHERE p.project_id = $1;
   `;
 
@@ -74,12 +74,12 @@ const getProjectsByCategoryId = async (categoryId) => {
     SELECT p.project_id, p.organization_id, p.title, p.description, p.location, p.date, o.name AS organization_name
     FROM public.projects p
     JOIN public.project_categories pc ON p.project_id = pc.project_id
-    JOIN public.organization o ON p.organization_id = o.organization_id
+    JOIN public.organizations o ON p.organization_id = o.organization_id
     WHERE pc.category_id = $1
     ORDER BY p.date;
   `;
 
-const result = await db.query(query, [categoryId]);
+  const result = await db.query(query, [categoryId]);
   return result.rows;
 }
 
@@ -114,7 +114,7 @@ const updateProject = async (projectId, title, description, location, date) => {
     RETURNING project_id
   `;
 
-  
+
   const queryParams = [projectId, title, description, location, date];
   const result = await db.query(query, queryParams);
 
@@ -136,9 +136,9 @@ export {
   getProjectsByOrganizationId,
   getUpcomingProjects,
   getProjectDetails,
-  getProjectsByCategoryId, 
-  createProject, 
+  getProjectsByCategoryId,
+  createProject,
   updateProject
 };
-  
-  
+
+

@@ -3,7 +3,7 @@ import db from './db.js'
 const getAllOrganizations = async () => {
     const query = `
         SELECT organization_id, name, description, contact_email, logo_filename
-      FROM public.organization;
+      FROM public.organizations;
     `;
 
     const result = await db.query(query);
@@ -19,7 +19,7 @@ const getOrganizationDetails = async (organizationId) => {
         description,
         contact_email,
         logo_filename
-      FROM organization
+      FROM public.organizations
       WHERE organization_id = $1;
     `;
 
@@ -44,7 +44,7 @@ const getOrganizationDetails = async (organizationId) => {
  */
 const createOrganization = async (name, description, contactEmail, logoFilename) => {
   const query = `
-      INSERT INTO organization (name, description, contact_email, logo_filename)
+      INSERT INTO public.organizations (name, description, contact_email, logo_filename)
       VALUES ($1, $2, $3, $4)
       RETURNING organization_id
     `;
@@ -65,7 +65,7 @@ const createOrganization = async (name, description, contactEmail, logoFilename)
 
 const updateOrganization = async (organizationId, name, description, contactEmail, logoFilename) => {
   const query = `
-      UPDATE organization
+      UPDATE public.organizations
       SET name = $1, description = $2, contact_email = $3, logo_filename = $4
       WHERE organization_id = $5
       RETURNING organization_id
