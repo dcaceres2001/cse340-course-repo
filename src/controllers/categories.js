@@ -52,7 +52,7 @@ const processAssignCategoriesForm = async (req, res) => {
     await updateCategoryAssignments(projectId, categoryIds);
 
     req.flash('success', 'Categories assigned successfully.');
-    res.redirect(`/projects/${projectId}`);
+    res.redirect(`/project/${projectId}`);
 }
 
 

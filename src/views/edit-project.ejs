@@ -29,17 +29,18 @@
                 required />
         </div>
         
-        <div class="form-group">
-            <label for="organizationId">Sponsoring Organization</label>
-            <select id="organizationId" name="organizationId" required>
-                <option value="" disabled selected>-- Select an Organization --</option>
-                <% organizations.forEach(org=> { %>
-                    <option value="<%= org.organization_id %>">
-                        <%= org.name %>
-                    </option>
-                    <% }); %>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="organizationId">Sponsoring Organization</label>
+        <select id="organizationId" name="organizationId" required>
+            <option value="" disabled>-- Select an Organization --</option>
+            <% organizations.forEach(org=> { %>
+                <option value="<%= org.organization_id %>" <%=org.organization_id===projectDetails.organization_id
+                    ? 'selected' : '' %>>
+                    <%= org.name %>
+                </option>
+                <% }); %>
+        </select>
+    </div>
 
         <button type="submit">Update Project</button>
     </form>

@@ -3,13 +3,15 @@ import express from 'express';
 import { showHomePage } from './controllers/index.js';
 import { showProjectsPage, projectValidation } from './controllers/projects.js';
 import { showCategoriesPage } from './controllers/categories.js';
-import { showOrganizationsPage, showOrganizationDetailsPage, showNewOrganizationForm, showEditOrganizationForm, processEditOrganizationForm, organizationValidation} from './controllers/organizations.js';
+import { showOrganizationsPage, showOrganizationDetailsPage, showNewOrganizationForm, showEditOrganizationForm, processEditOrganizationForm, organizationValidation } from './controllers/organizations.js';
 import { showTestError } from './controllers/errors.js';
 import { showProjectDetailsPage, showNewProjectForm, processNewProjectForm } from './controllers/projects.js';
 import { showCategoryDetailsPage, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm, categoryValidation } from './controllers/categories.js';
 import { processNewOrganizationForm } from './controllers/organizations.js';
 import { showAssignCategoriesForm, processAssignCategoriesForm } from './controllers/categories.js';
 import { showEditProjectForm, processEditProjectForm } from './controllers/projects.js'
+import { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout } from './controllers/users.js';
+
 
 
 
@@ -45,7 +47,7 @@ router.get('/category/:id', showCategoryDetailsPage);
 router.get('/new-organization', showNewOrganizationForm);
 
 // Route to handle new organization form submission
-router.post('/new-organization',  processNewOrganizationForm);
+router.post('/new-organization', processNewOrganizationForm);
 
 // Route for editing an organization (GET request to show the edit form)
 router.get('/edit-organization/:id', showEditOrganizationForm);
@@ -79,9 +81,14 @@ router.post('/new-category', categoryValidation, processNewCategoryForm);
 router.get('/edit-category/:id', showEditCategoryForm);
 router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
 
+// User registration routes
+router.get('/register', showUserRegistrationForm);
+router.post('/register', processUserRegistrationForm);
 
-
-
+// User login and logout routes
+router.get('/login', showLoginForm);
+router.post('/login', processLoginForm);
+router.get('/logout', processLogout);
 
 
 export default router;
