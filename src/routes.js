@@ -10,7 +10,7 @@ import { showCategoryDetailsPage, showNewCategoryForm, processNewCategoryForm, s
 import { processNewOrganizationForm } from './controllers/organizations.js';
 import { showAssignCategoriesForm, processAssignCategoriesForm } from './controllers/categories.js';
 import { showEditProjectForm, processEditProjectForm } from './controllers/projects.js'
-import { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout } from './controllers/users.js';
+import { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard } from './controllers/users.js';
 
 
 
@@ -90,5 +90,7 @@ router.get('/login', showLoginForm);
 router.post('/login', processLoginForm);
 router.get('/logout', processLogout);
 
+// Protected dashboard route
+router.get('/dashboard', requireLogin, showDashboard);
 
 export default router;
