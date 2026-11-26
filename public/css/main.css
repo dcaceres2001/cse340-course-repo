@@ -361,7 +361,11 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: var(--color-primary-hover);
 }
-
+.project-actions {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+}
 /* ---------- Footer ---------- */
 footer {
     background-color: var(--color-primary);
