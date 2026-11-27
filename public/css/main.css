@@ -227,6 +227,94 @@ ul {
     max-width: 65ch;
 }
 
+/* ---------- Categories ---------- */
+.page-intro {
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+}
+
+.category-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.category-tile {
+    display: flex;
+    align-items: center;
+    min-height: 4.5rem;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-primary);
+    border-radius: var(--radius);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(11, 61, 94, 0.12);
+    color: var(--color-primary-hover);
+}
+
+/* ---------- Organizations ---------- */
+.organization-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.organization-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-primary);
+    border-radius: var(--radius);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.organization-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(11, 61, 94, 0.12);
+}
+
+.organization-logo {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.organization-info h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.25rem;
+}
+
+.organization-info h2 a {
+    text-decoration: none;
+}
+
+.organization-info h2 a:hover {
+    text-decoration: underline;
+}
+
+.organization-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-muted);
+}
+
 /* ---------- tags---------- */
 
 
@@ -365,6 +453,110 @@ button[type="submit"]:hover {
     display: flex;
     gap: 1.25rem;
     margin-top: 1.25rem;
+}
+
+/* ---------- Dashboard ---------- */
+.profile-card,
+.admin-actions {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.profile-card h2,
+.admin-actions h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+}
+
+.profile-details {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+}
+
+.profile-details dt {
+    font-weight: 600;
+    color: var(--color-muted);
+}
+
+.profile-details dd {
+    margin: 0;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    text-decoration: none;
+}
+
+.button-link:hover {
+    background-color: var(--color-primary-hover);
+    color: #ffffff;
+}
+
+/* ---------- Data table ---------- */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+.data-table thead th {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: var(--color-bg);
+}
+
+.data-table tbody tr:hover {
+    background-color: #e8eff5;
+}
+
+.data-table td {
+    border-top: 1px solid var(--color-border);
+}
+
+/* ---------- Role badges ---------- */
+.role-badge {
+    display: inline-block;
+    padding: 0.15rem 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    border-radius: 999px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+}
+
+.role-badge.role-admin {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
 }
 /* ---------- Footer ---------- */
 footer {

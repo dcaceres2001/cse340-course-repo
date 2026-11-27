@@ -1,22 +1,39 @@
 <%- include('partials/header') %>
+
     <main>
         <h1>
             <%= title %>
         </h1>
 
-        <p>Here are a few of our partner organizations:</p>
-        <ul>
+        <p class="page-intro">Here are a few of our partner organizations:</p>
+
+        <ul class="organization-list">
             <% organizations.forEach(organization=> { %>
-                <li><img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo"><a
-                        href="/organization/<%= organization.organization_id %>">
-                        <%= organization.name %>
-                    </a>: <%= organization.contact_email %>
+                <li class="organization-card">
+                    <img class="organization-logo" src="/images/<%= organization.logo_filename %>"
+                        alt="<%= organization.name %> logo">
+
+                    <div class="organization-info">
+                        <h2>
+                            <a href="/organization/<%= organization.organization_id %>">
+                                <%= organization.name %>
+                            </a>
+                        </h2>
+                        <p>
+                            <a href="mailto:<%= organization.contact_email %>">
+                                <%= organization.contact_email %>
+                            </a>
+                        </p>
+                    </div>
                 </li>
                 <% }); %>
         </ul>
-        <p><% if (user && user.role_name==='admin' ) { %>
-            <a href="/new-organization">Add New Organization</a>
-            <% } %></p>
+
+    <p>
+        <% if (user && user.role_name==='admin' ) { %>
+            <a class="button-link" href="/new-organization">Add New Organization</a>
+            <% } %>
+    </p>
     </main>
 
     <%- include('partials/footer') %>

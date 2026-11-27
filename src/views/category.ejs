@@ -37,7 +37,7 @@
                 <p>No projects found for this category.</p>
                 <% } %>
                     <% if (user && user.role_name==='admin' ) { %>
-                        <a href="/edit-category/<%= category.category_id %>">Edit category</a>
+                        <a class="button-link" href="/edit-category/<%= category.category_id %>">Edit category</a>
                     <% } %>
     </main>
 

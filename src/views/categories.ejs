@@ -1,22 +1,29 @@
 <%- include('partials/header') %>
+
     <main>
         <h1>
             <%= title %>
         </h1>
 
-        <h2>Service Categories</h2>
-        <p>Browse service projects by category to find opportunities that match your interests.</p>
+        <p class="page-intro">
+            Browse service projects by category to find opportunities that match your interests.
+        </p>
 
-        <ul>
+        <ul class="category-grid">
             <% categories.forEach(category=> { %>
                 <li>
-                    <a href="/category/<%= category.category_id %>">
+                    <a class="category-tile" href="/category/<%= category.category_id %>">
                         <%= category.name %>
                     </a>
                 </li>
                 <% }); %>
         </ul>
-        <% if (user && user.role_name==='admin' ) { %><a href="/new-category">Add a new category</a><% } %>
+
+        <p>
+            <% if (user && user.role_name==='admin' ) { %>
+                <a class="button-link" href="/new-category">Add New Category</a>
+            <% } %>
+        </p>
     </main>
 
     <%- include('partials/footer') %>

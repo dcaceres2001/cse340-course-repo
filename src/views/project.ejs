@@ -44,8 +44,8 @@
                     </p>
         </article>
     <div class="project-actions">
-        <% if (user && user.role_name==='admin' ) { %><a href="/assign-categories/<%= project.project_id %>">Edit Categories</a>
-        <a href="/edit-project/<%= project.project_id %>">Edit Project</a>
+        <% if (user && user.role_name==='admin' ) { %><a class="button-link" href="/assign-categories/<%= project.project_id %>">Edit Categories</a>
+        <a class="button-link" href="/edit-project/<%= project.project_id %>">Edit Project</a>
         <% } %>
     </div>
     </main>
